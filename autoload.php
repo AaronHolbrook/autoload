@@ -1,6 +1,6 @@
 <?php
 /**
- * Automatically load all files in all directories within the specified location
+ * Automatically load all PHP files in the directory specified. Recursively.
  *
  * @author Aaron Holbrook
  * @date   3.18.2015
