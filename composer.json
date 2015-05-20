@@ -9,5 +9,9 @@
 			"email": "aaron@holbrook.io",
 			"homepage": "http://aaronjholbrook.com"
 		}
-	]
+	],
+	"require": {},
+	"autoload": {
+		"files": ["autoload.php"]
+	}
 }
