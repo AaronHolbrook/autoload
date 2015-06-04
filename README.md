@@ -31,3 +31,7 @@ Things I wouldn't recommend doing:
 
 ## Disclaimer
 Be aware that this may not be the right choice for your project. Please be fully aware of what this plugin does and how it works.
+
+## References
+* [Video Walkthrough](https://www.youtube.com/watch?v=NZtwcdIcHZ4)
+* [Packagist](https://packagist.org/packages/aaronholbrook/autoload)
