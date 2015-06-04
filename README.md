@@ -22,3 +22,12 @@ Simply load your desired `includes` or whatever directory by calling:
 \AaronHolbrook\Autoload\autoload( __DIR__ . 'includes' );
 ```
 
+## Caveats
+Since this is a recursive loader, you should be conscientious of what you're placing in your autoloaded directory.
+
+Things I wouldn't recommend doing:
+* Placing a big (or any) PHP library in the autoloaded directory (this should/could be handled better with [composer](https://getcomposer.org/) anyways!)
+* Being lax with permissions on a server. Obviously this is never a good idea, but I would be sure that your folder / file permissions are up to snuff (or strange files may be loaded)
+
+## Disclaimer
+Be aware that this may not be the right choice for your project. Please be fully aware of what this plugin does and how it works.
