@@ -45,11 +45,23 @@ if ( ! function_exists( 'AaronHolbrook\Autoload\autoload' ) ) :
 			// If it's a file, let's try to load it
 			else if ( 'file' === $filetype ) {
 
-				// Only load php files
-				if ( false === strpos( $item, '.php' ) ) {
+				$pathinfo = pathinfo( $filename );
+
+				// An empty filename wouldn't be a good idea
+				if ( empty( $pathinfo['filename'] ) ) {
 					continue;
 				}
 
+				// Sorry, need an extension
+				if ( empty( $pathinfo['extension'] ) ) {
+					continue;
+				}
+				
+				// Actually, we want just a PHP extension!
+				if ( 'php' !== $pathinfo['extension'] ) {
+					continue;
+				}
+				
 				// Only for files that really exist
 				if ( true !== file_exists( $filename ) ) {
 					continue;

@@ -23,7 +23,7 @@ Simply load your desired `includes` or whatever directory by calling:
 ```
 
 ## Caveats
-Since this is a recursive loader, you should be conscientious of what you're placing in your autoloaded directory.
+Since this is a recursive loader, you should be conscious of what you're placing in your autoloaded directory.
 
 Things I wouldn't recommend doing:
 * Placing a big (or any) PHP library in the autoloaded directory (this should/could be handled better with [composer](https://getcomposer.org/) anyways!)
