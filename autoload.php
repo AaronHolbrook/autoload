@@ -4,6 +4,7 @@
  *
  * @author Aaron Holbrook
  * @date   3.18.2015
+ * @copyright MIT, Aaron Holbrook 2015
  */
 
 namespace AaronHolbrook\Autoload;
