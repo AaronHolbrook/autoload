@@ -1,4 +1,5 @@
-# Autoload
+# Autoload [![Build Status](https://travis-ci.org/AaronHolbrook/autoload.svg?branch=master)](https://travis-ci.org/AaronHolbrook/autoload)
+==========
 
 ## Purpose
 Automatically load all PHP files in the specified directory. Recursively.
