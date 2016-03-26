@@ -34,19 +34,49 @@ if ( ! function_exists( 'AaronHolbrook\Autoload\autoload' ) ) :
 		foreach ( $scanned_dir as $item ) {
 
 			$filename = $directory . '/' . $item;
+			$real_path = realpath( $filename );
 
-			$filetype = filetype( $filename );
+			if ( false === $real_path ) {
+				continue;
+			}
+
+			$filetype = filetype( $real_path );
+
+			if ( empty( $filetype ) ) {
+				continue;
+			}
 
 			// If it's a directory then recursively load it
 			if ( 'dir' === $filetype ) {
 
-				autoload( $filename );
+				autoload( $real_path );
 			}
 
 			// If it's a file, let's try to load it
 			else if ( 'file' === $filetype ) {
 
-				$pathinfo = pathinfo( $filename );
+				// Don't allow files that have been uploaded
+				if ( is_uploaded_file( $real_path ) ) {
+					continue;
+				}
+
+				// Don't load any files that are not the proper mime type
+				if ( 'text/x-php' !== mime_content_type( $real_path ) ) {
+					continue;
+				}
+
+				$filesize = filesize( $real_path );
+				// Don't include empty or negative sized files
+				if ( $filesize <= 0 ) {
+					continue;
+				}
+
+				// Don't include files that are greater than 100kb
+				if ( $filesize > 100000 ) {
+					continue;
+				}
+
+				$pathinfo = pathinfo( $real_path );
 
 				// An empty filename wouldn't be a good idea
 				if ( empty( $pathinfo['filename'] ) ) {
@@ -64,11 +94,15 @@ if ( ! function_exists( 'AaronHolbrook\Autoload\autoload' ) ) :
 				}
 				
 				// Only for files that really exist
-				if ( true !== file_exists( $filename ) ) {
+				if ( true !== file_exists( $real_path ) ) {
 					continue;
 				}
 
-				require_once( $filename );
+				if ( true !== is_readable( $real_path ) ) {
+					continue;
+				}
+
+				require_once( $real_path );
 			}
 		}
 	}
